@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Spritely.Cqrs</id>
+    <version>0.1.0</version>
+    <authors>Victor Robinson</authors>
+    <owners>Victor Robinson</owners>
+    <licenseUrl>https://github.com/spritely/Cqrs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/spritely/Cqrs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A very simple CQRS package based on blog posts at: https://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=92.</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>CQRS</tags>
+  </metadata>
+</package>
