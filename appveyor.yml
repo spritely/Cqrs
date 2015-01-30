@@ -1,0 +1,21 @@
+version: 0.1.{build}
+
+configuration:
+  - Debug
+  - Release
+
+install:
+  - nuget restore
+
+nuget:
+  disable_publish_on_pr: true
+
+build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  parallel: true
+  verbosity: normal
+
+artifacts:
+  - path: Cqrs\bin\Debug
+  - path: Cqrs\bin\Release
