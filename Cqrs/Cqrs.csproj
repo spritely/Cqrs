@@ -35,7 +35,14 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandProcessor.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandWithReturn.cs" />
+    <Compile Include="ICommandWithReturnHandler.cs" />
+    <Compile Include="ICommandProcessor.cs" />
+    <Compile Include="ICommandWithReturnProcessor.cs" />
     <Compile Include="IQueryProcessor.cs" />
+    <Compile Include="CommandWithReturnProcessor.cs" />
     <Compile Include="QueryProcessor.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="IQuery.cs" />
