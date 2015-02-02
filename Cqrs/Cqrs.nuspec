@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Spritely.Cqrs</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <authors>Victor Robinson</authors>
     <owners>Victor Robinson</owners>
     <licenseUrl>https://github.com/spritely/Cqrs/blob/master/LICENSE</licenseUrl>

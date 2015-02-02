@@ -4,7 +4,7 @@
     ///     Represents a command handler (typically a database write operation).
     /// </summary>
     /// <typeparam name="TCommand">The type of the command.</typeparam>
-    public interface ICommandHandler<in TCommand>
+    public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {
         /// <summary>
         ///     Handles the specified command.
