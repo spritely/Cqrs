@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/github/Spritely/Cqrs?branch=master&svg=true)](https://ci.appveyor.com/project/VictorRobinson/cqrs/)
+
 # Spritely.Cqrs
 A very simple command/query data access separation library based on blog post(s) at https://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=92
 
