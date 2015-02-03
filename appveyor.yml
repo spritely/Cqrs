@@ -1,4 +1,4 @@
-version: 0.2.{build}
+version: 0.3.{build}
 
 configuration:
   - Debug
@@ -12,10 +12,5 @@ nuget:
 
 build:
   publish_nuget: true
-  publish_nuget_symbols: true
   parallel: true
   verbosity: normal
-
-artifacts:
-  - path: Cqrs\bin\Debug
-  - path: Cqrs\bin\Release
