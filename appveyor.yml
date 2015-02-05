@@ -1,4 +1,4 @@
-version: 0.3.{build}
+version: 0.4.0.{build}
 
 configuration:
   - Debug
@@ -9,6 +9,13 @@ install:
 
 nuget:
   disable_publish_on_pr: true
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}-$(APPVEYOR_REPO_COMMIT)'
 
 build:
   publish_nuget: true
