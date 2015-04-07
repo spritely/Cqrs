@@ -1,3 +1,7 @@
+# {build} is required by AppVeyor to uniquely identify its builds on the url
+# It is a continuously incrementing number so when used it violates the reset
+# smaller build parts rule of semantic versioning. Therefore we introduce a
+# second environment variable semantic_version.
 version: 0.5.0.{build}
 
 configuration:
@@ -5,7 +9,8 @@ configuration:
   - Release
 
 install:
-  - cmd: set TRUNCATED_REPO_COMMIT=%APPVEYOR_REPO_COMMIT:~0,6%
+  - cmd: set semantic_version=%APPVEYOR_BUILD_VERSION:~0,5%
+  - cmd: set truncated_repo_commit=%APPVEYOR_REPO_COMMIT:~0,10%
   - nuget restore
 
 nuget:
@@ -14,9 +19,9 @@ nuget:
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}-$(TRUNCATED_REPO_COMMIT)'
+  assembly_version: '$(semantic_version).{build}'
+  assembly_file_version: '$(semantic_version).{build}'
+  assembly_informational_version: '$(semantic_version)-$(truncated_repo_commit)'
 
 build:
   publish_nuget: true
