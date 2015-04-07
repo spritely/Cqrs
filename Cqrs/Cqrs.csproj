@@ -33,9 +33,14 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandProcessor.cs" />
+    <Compile Include="Credentials.cs" />
+    <Compile Include="SqlConnectionExtensions.cs" />
+    <Compile Include="DatabaseConnectionSettings.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandWithReturn.cs" />
     <Compile Include="ICommandWithReturnHandler.cs" />
