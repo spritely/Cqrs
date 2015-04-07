@@ -10,7 +10,9 @@ configuration:
 
 install:
   - cmd: set semantic_version=%APPVEYOR_BUILD_VERSION:~0,5%
+  - cmd: echo %semantic_version%
   - cmd: set truncated_repo_commit=%APPVEYOR_REPO_COMMIT:~0,10%
+  - cmd: echo %truncated_repo_commit%
   - nuget restore
 
 nuget:
