@@ -10,8 +10,8 @@ configuration:
 
 install:
   - set semantic_version=%APPVEYOR_BUILD_VERSION:~0,5%
-  - echo Version: %semantic_version%
-  - echo Building commit: %APPVEYOR_REPO_COMMIT%
+  - echo Version - %semantic_version%
+  - echo Building commit - %APPVEYOR_REPO_COMMIT%
   - nuget restore
 
 nuget:
