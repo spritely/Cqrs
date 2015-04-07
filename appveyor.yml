@@ -5,6 +5,7 @@ configuration:
   - Release
 
 install:
+  - cmd: set TRUNCATED_REPO_COMMIT=%APPVEYOR_REPO_COMMIT:~0,6%
   - nuget restore
 
 nuget:
@@ -15,7 +16,7 @@ assembly_info:
   file: '**\AssemblyInfo.*'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
-  assembly_informational_version: '{version}-$(APPVEYOR_REPO_COMMIT)'
+  assembly_informational_version: '{version}-$(TRUNCATED_REPO_COMMIT)'
 
 build:
   publish_nuget: true
