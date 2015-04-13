@@ -51,7 +51,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Extend.cs" />
     <Compile Include="SqlConnectionExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
