@@ -2,7 +2,7 @@
 # It is a continuously incrementing number so when used it violates the reset
 # smaller build parts rule of semantic versioning. Therefore we introduce a
 # second environment variable semantic_version.
-version: 0.5.0.{build}
+version: 0.5.1.{build}
 
 configuration:
   - Debug
@@ -27,3 +27,13 @@ build:
   publish_nuget: true
   parallel: true
   verbosity: normal
+
+deploy:
+  - provider: NuGet
+    on:
+      branch: master
+      configuration: Release
+    api_key:
+      secure: dUMLXnYuqF7ORswtDCtj2XgKlpLMKrXZrq9m/FEN2xu0vTClejXqADyxMEawTs2W
+    skip_symbols: true
+    artifact: /.*\.nupkg/
