@@ -2,7 +2,7 @@
 # It is a continuously incrementing number so when used it violates the reset
 # smaller build parts rule of semantic versioning. Therefore we introduce a
 # second environment variable semantic_version.
-version: 0.5.1.{build}
+version: 0.6.0.{build}
 
 configuration:
   - Debug
@@ -24,6 +24,7 @@ assembly_info:
   assembly_informational_version: '$(semantic_version)'
 
 build:
+  project: Build.proj /p:RunCodeAnalysis=true
   publish_nuget: true
   parallel: true
   verbosity: normal

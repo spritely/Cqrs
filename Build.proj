@@ -1,0 +1,53 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" TreatAsLocalProperty="SourceRootPath;PackagesRootPath;BuildRootPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This file is not meant to be edited except by Spritely.Build designers
+       
+       To extend the build you should create files such as:
+       *.ProjectExtension.targets or *.ProjectExtension.BeforeCommon.targets
+       These files can be placed anywhere inside the NuGet packages folder or alongside this file.
+       It is recommended you avoid the BeforeCommon.targets unless your build customization
+       requires running before Microsoft.Common.targets.
+
+       NuGet packages are expected to be located at $(SourceRootPath)\packages or this location can
+       be configured by using /p:PackagesRootPath=<somepath>
+
+       SourceRootPath is configurable via /p:SourceRootPath=<somepath>
+       It defaults to the same location as this file.
+       This path should not be inside $(PackagesRootPath)
+
+       This file is a placeholder so Visual Studio build hooks can find the build (the file name is significant).
+       It can be used to trigger a command line build with behavior nearly identical to Visual Studio.
+       It must live somewhere up the tree (towards the root) from .csproj files.
+       All other build files can live anywhere if /p:BuildRootPath=<somepath> is supplied.
+       Build files are otherwise assumed to be located at $(PackagesRootPath)\Spritely.Build.<version>\* -->
+
+  <PropertyGroup>
+    <!-- If this file changes force a rebuild -->
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <!-- To avoid circular imports, importers can use Condition="'$(BuildProjImported)' != 'true'" -->
+    <BuildProjImported>true</BuildProjImported>
+  </PropertyGroup>
+
+  <!-- Minimal set of paths available throughout the build
+       All Spritely.Build paths follow the MSBuild convention of using paths ending with '\'
+       Duplicated in BuildHook.targets, but included here to resolve $(BuildRootPath) so targets can be located -->
+  <PropertyGroup>
+    <BuildPackageName>Spritely.Build</BuildPackageName>
+    <BuildPackageVersion>0.1.0</BuildPackageVersion>
+    <SourceRootPath Condition="'$(SourceRootPath)' == ''">$(MsBuildThisFileDirectory)</SourceRootPath>
+    <SourceRootPath Condition="!HasTrailingSlash('$(SourceRootPath)')">$(SourceRootPath)\</SourceRootPath>
+    <PackagesRootPath Condition="'$(PackagesRootPath)' == ''">$(SourceRootPath)packages\</PackagesRootPath>
+    <PackagesRootPath Condition="!HasTrailingSlash('$(PackagesRootPath)')">$(PackagesRootPath)\</PackagesRootPath>
+    <BuildRootPath Condition="'$(BuildRootPath)' == ''">$(PackagesRootPath)$(BuildPackageName).$(BuildPackageVersion)\</BuildRootPath>
+    <BuildRootPath Condition="!HasTrailingSlash('$(BuildRootPath)')">$(BuildRootPath)\</BuildRootPath>
+  </PropertyGroup>
+
+  <Import Project="Projects.targets" />
+
+  <!-- Do not change this line as it pulls in the main build system. -->
+  <Import Project="$(BuildRootPath)MainBuild.targets" Condition="'$(MainBuildImported)' != 'true'" />
+
+  <!-- Provides two targets: InstallBuildHook and UninstallBuildHook.
+       It is safe to delete this line if these targets are unwanted.
+       Installation will only occur if these targets are explicitly called. -->
+  <Import Project="$(BuildRootPath)BuildHook.targets" Condition="'$(BuildHookImported)' != 'true'" />
+</Project>

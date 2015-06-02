@@ -1,5 +1,7 @@
 ﻿namespace Spritely.Cqrs
 {
+    using System;
+
     // TODO: Write unit tests for CommandProcessor
     /// <inheritdoc />
     public sealed class CommandProcessor : ICommandProcessor
@@ -15,11 +17,16 @@
         /// <inheritdoc />
         public void Process(ICommand command)
         {
-            var handlerType = typeof (ICommandHandler<>).MakeGenericType(command.GetType());
+            if (command == null)
+            {
+                throw new ArgumentNullException("command");
+            }
+
+            var handlerType = typeof(ICommandHandler<>).MakeGenericType(command.GetType());
 
             dynamic handler = this.getInstance(handlerType);
 
-            handler.Handle((dynamic) command);
+            handler.Handle((dynamic)command);
         }
     }
 }

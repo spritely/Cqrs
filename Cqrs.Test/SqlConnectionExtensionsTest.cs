@@ -28,9 +28,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Async=False"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Async=False"));
+            }
         }
 
         [Test]
@@ -54,9 +55,10 @@ namespace Spritely.Cqrs.Test
                 Async = true
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Async=True"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Async=True"));
+            }
         }
 
         [Test]
@@ -74,9 +76,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Encrypt=False"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Encrypt=False"));
+            }
         }
 
         [Test]
@@ -101,9 +104,10 @@ namespace Spritely.Cqrs.Test
                 Encrypt = true
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Encrypt=True"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Encrypt=True"));
+            }
         }
 
         [Test]
@@ -121,9 +125,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Server"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Server"));
+            }
         }
 
         [Test]
@@ -147,9 +152,10 @@ namespace Spritely.Cqrs.Test
                 Server = "Test"
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Server=Test"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Server=Test"));
+            }
         }
 
         [Test]
@@ -167,9 +173,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Database"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Database"));
+            }
         }
 
         [Test]
@@ -193,9 +200,10 @@ namespace Spritely.Cqrs.Test
                 Database = "Test"
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Database=Test"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Database=Test"));
+            }
         }
 
         [Test]
@@ -213,9 +221,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Connection Timeout"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Connection Timeout"));
+            }
         }
 
         [Test]
@@ -239,9 +248,10 @@ namespace Spritely.Cqrs.Test
                 ConnectionTimeoutInSeconds = 30
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Connection Timeout=30"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Connection Timeout=30"));
+            }
         }
 
         [Test]
@@ -259,9 +269,10 @@ namespace Spritely.Cqrs.Test
         {
             var settings = new DatabaseConnectionSettings();
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, Contains.Substring("Integrated Security=True"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, Contains.Substring("Integrated Security=True"));
+            }
         }
 
         [Test]
@@ -289,9 +300,10 @@ namespace Spritely.Cqrs.Test
                 }
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Integrated Security"));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.ConnectionString, !Contains.Substring("Integrated Security"));
+            }
         }
 
         [Test]
@@ -322,9 +334,10 @@ namespace Spritely.Cqrs.Test
                 }
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.Credential.UserId, Is.EqualTo(settings.Credentials.User));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.Credential.UserId, Is.EqualTo(settings.Credentials.User));
+            }
         }
 
         [Test]
@@ -355,9 +368,10 @@ namespace Spritely.Cqrs.Test
                 }
             };
 
-            var sqlConnection = settings.CreateSqlConnection();
-
-            Assert.That(sqlConnection.Credential.Password, Is.EqualTo(settings.Credentials.Password));
+            using (var sqlConnection = settings.CreateSqlConnection())
+            {
+                Assert.That(sqlConnection.Credential.Password, Is.EqualTo(settings.Credentials.Password));
+            }
         }
     }
 }

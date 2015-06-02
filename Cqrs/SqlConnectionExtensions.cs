@@ -18,7 +18,7 @@ namespace Spritely.Cqrs
         {
             if (settings == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException("settings");
             }
 
             var connectionString = settings.CreateCredentiallessConnectionString();
@@ -57,7 +57,7 @@ namespace Spritely.Cqrs
         {
             if (settings == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException("settings");
             }
 
             var connectionString = settings.CreateCredentiallessConnectionString();

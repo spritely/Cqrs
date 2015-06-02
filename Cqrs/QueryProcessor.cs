@@ -1,5 +1,7 @@
 ﻿namespace Spritely.Cqrs
 {
+    using System;
+
     // TODO: Write unit tests for QueryProcessor
     /// <inheritdoc />
     public sealed class QueryProcessor : IQueryProcessor
@@ -15,11 +17,16 @@
         /// <inheritdoc />
         public TResult Process<TResult>(IQuery<TResult> query)
         {
-            var handlerType = typeof (IQueryHandler<,>).MakeGenericType(query.GetType(), typeof (TResult));
+            if (query == null)
+            {
+                throw new ArgumentNullException("query");
+            }
+
+            var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
 
             dynamic handler = this.getInstance(handlerType);
 
-            return handler.Handle((dynamic) query);
+            return handler.Handle((dynamic)query);
         }
     }
 }
