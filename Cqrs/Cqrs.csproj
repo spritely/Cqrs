@@ -40,6 +40,7 @@
     <Compile Include="%28Spritely.Recipes%29\SecureString.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="Credentials.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="SqlConnectionExtensions.cs" />
     <Compile Include="DatabaseConnectionSettings.cs" />
     <Compile Include="IDatabase.cs" />
