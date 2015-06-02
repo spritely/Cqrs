@@ -28,9 +28,12 @@ assembly_info:
 
 build:
   project: Build.proj
-  publish_nuget: true
   parallel: true
   verbosity: normal
+
+after_test:
+  - nuget pack "%APPVEYOR_BUILD_FOLDER%\Cqrs\Cqrs.nuspec" -BasePath "%APPVEYOR_BUILD_FOLDER%\Cqrs\bin\%configuration%" -Properties "Configuration=%configuration%;Platform=%platform%;Version=%semantic_version%" -OutputDirectory "%TEMP%"
+  - appveyor PushArtifact "%TEMP%\Spritely.Cqrs.%semantic_version%.nupkg"
 
 deploy:
   - provider: NuGet
