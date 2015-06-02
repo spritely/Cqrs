@@ -8,6 +8,9 @@ configuration:
   - Debug
   - Release
 
+environment:
+  RunCodeAnalysis: true
+
 install:
   - set semantic_version=%APPVEYOR_BUILD_VERSION:~0,5%
   - echo Version - %semantic_version%
@@ -24,7 +27,7 @@ assembly_info:
   assembly_informational_version: '$(semantic_version)'
 
 build:
-  project: Build.proj /p:RunCodeAnalysis=true
+  project: Build.proj
   publish_nuget: true
   parallel: true
   verbosity: normal
