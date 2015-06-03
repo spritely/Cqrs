@@ -20,6 +20,7 @@ namespace Spritely.Recipes
 #if !RecipesProject
     [System.Diagnostics.DebuggerStepThrough]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [System.CodeDom.Compiler.GeneratedCode("Spritely.Recipes", "See package version number")]
 #endif
     internal static partial class Functional
     {
