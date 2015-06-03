@@ -22,7 +22,7 @@ namespace Spritely.Recipes
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Spritely.Recipes", "See package version number")]
 #endif
-    public static partial class Functional
+    internal static partial class Functional
     {
         /// <summary>
         ///     Turns an action into a function so actions can be used like Functions in LINQ code.

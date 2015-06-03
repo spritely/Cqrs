@@ -35,7 +35,7 @@ build:
   verbosity: normal
 
 after_test:
-  - nuget pack "%APPVEYOR_BUILD_FOLDER%\Cqrs\Cqrs.csproj" -BasePath "%APPVEYOR_BUILD_FOLDER%\Cqrs" -Properties "Configuration=%configuration%;Platform=%platform%;Version=%semantic_version%" -OutputDirectory "%TEMP%"
+  - nuget pack "%APPVEYOR_BUILD_FOLDER%\Cqrs\Cqrs.csproj" -IncludeReferencedProjects -BasePath "%APPVEYOR_BUILD_FOLDER%\Cqrs\bin\%configuration%" -Properties "Configuration=%configuration%;Platform=%platform%;Version=%semantic_version%" -OutputDirectory "%TEMP%"
   - appveyor PushArtifact "%TEMP%\Spritely.Cqrs.%semantic_version%.nupkg"
 
 deploy:
