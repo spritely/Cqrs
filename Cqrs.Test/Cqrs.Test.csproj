@@ -51,6 +51,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="%28Spritely.Recipes%29\Functional.cs" />
+    <Compile Include="%28Spritely.Recipes%29\SecureString.cs" />
     <Compile Include="SqlConnectionExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
