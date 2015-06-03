@@ -14,4 +14,8 @@
     <copyright>Copyright (C) 2015</copyright>
     <tags>Spritely CQRS Data Access</tags>
   </metadata>
+  <files>
+    <file src="Spritely.Cqrs.dll" target="lib\net45" />
+    <file src="Spritely.Cqrs.pdb" target="lib\net45" />
+  </files>
 </package>
