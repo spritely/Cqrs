@@ -2,7 +2,9 @@
 # It is a continuously incrementing number so when used it violates the reset
 # smaller build parts rule of semantic versioning. Therefore we introduce a
 # second environment variable semantic_version.
-version: 0.6.1.{build}
+version: 0.6.2.{build}
+
+os: Visual Studio 2015
 
 environment:
   RunCodeAnalysis: true
