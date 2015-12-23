@@ -41,6 +41,10 @@
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="ICommandWithReturnHandlerAsync.cs" />
+    <Compile Include="ICommandWithReturnProcessorAsync.cs" />
+    <Compile Include="IQueryHandlerAsync.cs" />
+    <Compile Include="IQueryProcessorAsync.cs" />
     <Compile Include="SqlConnectionExtensions.cs" />
     <Compile Include="DatabaseConnectionSettings.cs" />
     <Compile Include="IDatabase.cs" />

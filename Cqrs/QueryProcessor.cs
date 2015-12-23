@@ -1,10 +1,11 @@
 ﻿namespace Spritely.Cqrs
 {
     using System;
+    using System.Threading.Tasks;
 
     // TODO: Write unit tests for QueryProcessor
     /// <inheritdoc />
-    public sealed class QueryProcessor : IQueryProcessor
+    public sealed class QueryProcessor : IQueryProcessor, IQueryProcessorAsync
     {
         private readonly GetInstance getInstance;
 
@@ -27,6 +28,21 @@
             dynamic handler = this.getInstance(handlerType);
 
             return handler.Handle((dynamic)query);
+        }
+
+        /// <inheritdoc />
+        public async Task<TResult> ProcessAsync<TResult>(IQuery<TResult> query)
+        {
+            if (query == null)
+            {
+                throw new ArgumentNullException("query");
+            }
+
+            var handlerType = typeof(IQueryHandlerAsync<,>).MakeGenericType(query.GetType(), typeof(TResult));
+
+            dynamic handler = this.getInstance(handlerType);
+
+            return await handler.HandleAsync((dynamic)query);
         }
     }
 }
