@@ -1,4 +1,4 @@
-<Project ToolsVersion="4.0" DefaultTargets="Build" TreatAsLocalProperty="SourceRootPath;PackagesRootPath;BuildRootPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" TreatAsLocalProperty="SourceRootPath;BuildExtensionsRootPath;PackagesRootPath;BuildRootPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- This file is not meant to be edited except by Spritely.Build designers
        
        To extend the build you should create files such as:
@@ -32,9 +32,11 @@
        Duplicated in BuildHook.targets, but included here to resolve $(BuildRootPath) so targets can be located -->
   <PropertyGroup>
     <BuildPackageName>Spritely.Build</BuildPackageName>
-    <BuildPackageVersion>0.1.0</BuildPackageVersion>
+    <BuildPackageVersion>0.2.3</BuildPackageVersion>
     <SourceRootPath Condition="'$(SourceRootPath)' == ''">$(MsBuildThisFileDirectory)</SourceRootPath>
     <SourceRootPath Condition="!HasTrailingSlash('$(SourceRootPath)')">$(SourceRootPath)\</SourceRootPath>
+    <BuildExtensionsRootPath Condition="'$(BuildExtensionsRootPath)' == ''">$(SourceRootPath).build\</BuildExtensionsRootPath>
+    <BuildExtensionsRootPath Condition="!HasTrailingSlash('$(BuildExtensionsRootPath)')">$(BuildExtensionsRootPath)\</BuildExtensionsRootPath>
     <PackagesRootPath Condition="'$(PackagesRootPath)' == ''">$(SourceRootPath)packages\</PackagesRootPath>
     <PackagesRootPath Condition="!HasTrailingSlash('$(PackagesRootPath)')">$(PackagesRootPath)\</PackagesRootPath>
     <BuildRootPath Condition="'$(BuildRootPath)' == ''">$(PackagesRootPath)$(BuildPackageName).$(BuildPackageVersion)\</BuildRootPath>

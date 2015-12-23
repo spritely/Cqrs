@@ -1,0 +1,16 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_IsCodeAnalysisTestProject Condition="$(MSBuildProjectName.EndsWith(&quot;.Test&quot;)) or $(MSBuildProjectName.EndsWith(&quot;.Tests&quot;))">true</_IsCodeAnalysisTestProject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CodeAnalysisDictionary Condition="'$(CodeAnalysisDictionary)' == ''">$(MSBuildThisFileDirectory)CodeAnalysisDictionary.xml</CodeAnalysisDictionary>
+    <CodeAnalysisRuleSet Condition="'$(CodeAnalysisRuleSet)' == ''">$(MSBuildThisFileDirectory)Spritely.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisTestRuleSet Condition="'$(CodeAnalysisTestRuleSet)' == '' and Exists('$(MSBuildThisFileDirectory)SpritelyTest.ruleset')">$(MSBuildThisFileDirectory)SpritelyTest.ruleset</CodeAnalysisTestRuleSet>
+    <CodeAnalysisTestRuleSet Condition="'$(CodeAnalysisTestRuleSet)' == '' or !Exists('$(CodeAnalysisTestRuleSet)')">$(CodeAnalysisRuleSet)</CodeAnalysisTestRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(_IsCodeAnalysisTestProject)' == 'true'">$(CodeAnalysisTestRuleSet)</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="$(CodeAnalysisDictionary)" />
+  </ItemGroup>
+</Project>
