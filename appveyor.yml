@@ -2,7 +2,7 @@
 # It is a continuously incrementing number so when used it violates the reset
 # smaller build parts rule of semantic versioning. Therefore we introduce a
 # second environment variable semantic_version.
-version: 0.7.0.{build}
+version: 0.7.1.{build}
 
 os: Visual Studio 2015
 

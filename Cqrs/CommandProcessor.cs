@@ -28,5 +28,20 @@
 
             handler.Handle((dynamic)command);
         }
+
+        /// <inheritdoc />
+        public void ProcessAsync(ICommand command)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException("command");
+            }
+
+            var handlerType = typeof(ICommandHandlerAsync<>).MakeGenericType(command.GetType());
+
+            dynamic handler = this.getInstance(handlerType);
+
+            handler.Handle((dynamic)command);
+        }
     }
 }
