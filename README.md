@@ -186,7 +186,7 @@ There is also an ICommandProcessor if your constructors get too heavy:
     {
         private readonly ICommandProcessor commandProcessor;
         
-        public SampleBusinessOperation(ICommandProcessor commandProcessor)
+        public SampleUpdateBusinessOperation(ICommandProcessor commandProcessor)
         {
             this.commandProcessor = commandProcessor;
         }
